@@ -14,7 +14,25 @@
             </property-metadata>
             <quickfix classname="net.sf.eclipsecs.sample.checks.MethodLimitQuickfix" />
         </rule-metadata>
-        
+
+       
+        <rule-metadata name="%Blob.name" internal-name="Blob" parent="TreeWalker">
+            <alternative-name internal-name="net.sf.eclipsecs.sample.checks.BlobCheck" />
+            <description>%Blob.desc</description>
+            <property-metadata name="max" datatype="Integer" default-value="10">
+                <description>The maximum number of allowed method_definitions, loops, variable_definitions and method_calls</description>
+            </property-metadata>                
+            <!--  <quickfix classname="net.sf.eclipsecs.sample.checks.BlobCheckQuickfix" /> -->
+        </rule-metadata>
+         
+               <rule-metadata name="%RefusedBequest.name" internal-name="RefusedBequest" parent="TreeWalker">
+            <alternative-name internal-name="net.sf.eclipsecs.sample.checks.RefusedBequestCheck" />
+            <description>%Blob.desc</description>
+            <!-- property-metadata name="max" datatype="Integer" default-value="2">
+                <description>The maximum number of methods of Refused Bequest</description>
+            </property-metadata -->                
+            <!--  <quickfix classname="net.sf.eclipsecs.sample.checks.BlobCheckQuickfix" /> -->
+        </rule-metadata>               
               
     </rule-group-metadata>
 </checkstyle-metadata>

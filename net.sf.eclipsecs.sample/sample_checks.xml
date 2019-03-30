@@ -17,6 +17,16 @@
         </module>
         <!-- <module name="LineLength"> <property name="max" value="${maxLineLength}"/> </module> -->
 
+		<module name="Blob">
+            <property name="max" value="1" />
+            <message key="blob" value="The blob class is {0}" />
+        </module>
+        
+        <module name="RefusedBequest">
+            <property name="max" value="1" />
+            <message key="refusedBequest" value="There is refused bequest anti-pattern {0}" />
+        </module>
+        
         <module name="Regexp">
             <property name="format"
                 value="(interface [a-zA-Z0-9 &lt;&gt;,\./*?[\s]]* \{)|((@Immutable|@ThreadSafe|@NotThreadSafe)(.*[\n])*.*(class|enum) [a-zA-Z0-9\s&lt;&gt;,\./*?]* \{)" />
