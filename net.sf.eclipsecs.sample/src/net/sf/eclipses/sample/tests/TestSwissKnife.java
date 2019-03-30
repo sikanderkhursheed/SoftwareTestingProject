@@ -1,6 +1,6 @@
 package net.sf.eclipses.sample.tests;
 
-public class TestMethodLimit {
+public class TestSwissKnife implements Interface1,Interface2,Interface3 {
 
 
 	public void a() {}

@@ -13,7 +13,7 @@
 
         <module name="MethodLimit">
             <property name="max" value="1" />
-            <message key="methodlimit" value="Man, only {0} methods allowed." />
+            <message key="swissknife" value="A class can implement at most {0} interfaces." />
         </module>
         <!-- <module name="LineLength"> <property name="max" value="${maxLineLength}"/> </module> -->
 
