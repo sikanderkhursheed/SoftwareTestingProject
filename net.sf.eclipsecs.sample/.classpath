@@ -3,13 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/SoftwareTestingProject/libraries/cglib-nodep-3.2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/SoftwareTestingProject/libraries/checkstyle-checkstyle-8.17.zip"/>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/SoftwareTestingProject/libraries/easymock-3.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/SoftwareTestingProject/libraries/hamcrest-all-1.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/SoftwareTestingProject/libraries/javassist-3.12.1.GA.jar"/>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/SoftwareTestingProject/libraries/objenesis-2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/SoftwareTestingProject/libraries/powermock-api-easymock-1.6.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/SoftwareTestingProject/libraries/powermock-mockito-release-full-1.6.4-full.jar"/>
+	<classpathentry kind="lib" path="C:/GITHUB/SoftwareTestingProject/libraries/checkstyle-checkstyle-8.17.zip"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
