@@ -13,6 +13,13 @@
                 <description>The maximum number of interfaces allowed.</description>
             </property-metadata>
         </rule-metadata>
+        <rule-metadata name="%FeatureEnvy.name" internal-name="FeatureEnvy" parent="TreeWalker">
+            <alternative-name internal-name="net.sf.eclipsecs.sample.checks.FeatureEnvy" />
+            <description>%FeatureEnvy.desc</description>
+            <property-metadata name="max" datatype="Integer" default-value="2">
+                <description>The maximum number of foreign variables (objects) allowed.</description>
+            </property-metadata>
+        </rule-metadata>
         
               
     </rule-group-metadata>
