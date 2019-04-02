@@ -57,4 +57,24 @@ public class BlobCheck extends AbstractCheck {
 	    }
 	  }  
 
+      //  public void visitTokenWithLog(DetailAST ast) will be tested using Junit
+	  public void visitTokenWithoutLog(DetailAST ast) {
+		    // find the OBJBLOCK node below the CLASS_DEF/INTERFACE_DEF
+		    DetailAST objBlock = ast.findFirstToken(TokenTypes.OBJBLOCK);
+		    //System.out.println("objBlock = "+objBlock);
+		    // count the number of direct children of the OBJBLOCK having METHOD_DEFS, 
+		    //LITERAL_FOR, LITERAL_WHILE, DO_WHILE, VARIABLE_DEF and METHOD_CALL
+		    count = objBlock.getChildCount(TokenTypes.METHOD_DEF)
+			    	   +objBlock.getChildCount(TokenTypes.LITERAL_FOR)
+			    	   +objBlock.getChildCount(TokenTypes.LITERAL_WHILE)
+			    	   +objBlock.getChildCount(TokenTypes.DO_WHILE)
+			    	   +objBlock.getChildCount(TokenTypes.VARIABLE_DEF)
+			    	   +objBlock.getChildCount(TokenTypes.METHOD_CALL);
+		    //System.out.println("count = "+count);
+		    //System.out.println("max = "+max);
+		    // report Blob (Gob Class) if limit is reached
+		    if (count > max) {
+		    	System.out.println(ast.getText()+ "has a blob (god class) anti-pattern");
+		    }
+		  }  
 }
