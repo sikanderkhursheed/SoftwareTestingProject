@@ -38,18 +38,25 @@ public class FeatureEnvyCheck extends AbstractCheck{
 			
 			while(varBlock!=null ) {
 				DetailAST varBlock1= varBlock;
-				
-				if(varBlock1.findFirstToken(TokenTypes.IDENT) != null) {
+				try {
+				  if(varBlock1.findFirstToken(TokenTypes.TYPE).getFirstChild().getType()==TokenTypes.IDENT) {
 					count+=1; 
 					    	
 					} 
+				}
+				 
+				catch(Exception e) {
+					
+					
+				}
+					
 				if(varBlock.getNextSibling() !=null)
 				 varBlock = varBlock.getNextSibling();
 				else 
 				 break;
-				if(count>max)
-					break;
+				
 			}
+			
 			if(count>max)
 				log(ast.getLineNo(), "featureenvy", max);
 		}
