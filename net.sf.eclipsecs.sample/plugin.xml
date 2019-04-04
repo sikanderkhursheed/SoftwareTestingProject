@@ -8,9 +8,7 @@
     </extension>
     
     <!-- This plugin provides custom quickfixes for Checkstyle problems. -->
-    <extension
-          point="net.sf.eclipsecs.ui.checkstyleQuickfixProvider">
-    </extension>
+    
 
     <!-- 
         Sample builtin check configuration

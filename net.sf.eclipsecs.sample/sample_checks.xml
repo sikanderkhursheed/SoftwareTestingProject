@@ -11,9 +11,13 @@
 
     <module name="TreeWalker">
 
-        <module name="MethodLimit">
-            <property name="max" value="1" />
-            <message key="methodlimit" value="Man, only {0} methods allowed." />
+        <module name="SwissKnifeCheck">
+            <property name="max" value="2" />
+            <message key="swissknife" value="A class can implement at most {0} interfaces." />
+        </module>
+        <module name="FeatureEnvy">
+            <property name="max" value="2" />
+            <message key="featureenvy" value="A class can declare at most {0} foreign variables (objects)." />
         </module>
         <!-- <module name="LineLength"> <property name="max" value="${maxLineLength}"/> </module> -->
 
