@@ -53,7 +53,7 @@ public class RefusedBequestCheck extends AbstractCheck {
 		 */
 	  @Override
 	  public void visitToken(DetailAST ast) {
-		    // don't handle null ast
+		    // don't handle the ast is null
 	        if ( ast == null) {
 	            return;
 	        }
@@ -89,7 +89,7 @@ public class RefusedBequestCheck extends AbstractCheck {
 	  
       //  public void visitTokenWithLog(DetailAST ast) will be tested using Junit
 	  public void visitTokenWithoutLog(DetailAST ast) {
-		    // don't handle null ast
+		    // don't handle the ast is null
 	        if ( ast == null) {
 	            return;
 	        }
@@ -125,7 +125,7 @@ public class RefusedBequestCheck extends AbstractCheck {
 	  
 	/**
 	 * @param aAST, className 
-	 * @return The number of methods in the class whose name is $className
+	 * @return the number of methods in the class whose name is $className
 	 */
 	private int findMethodNumberByClassName(DetailAST theAST, String className) {
 		if ( theAST == null) {
