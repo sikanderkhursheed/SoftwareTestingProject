@@ -58,33 +58,32 @@ public class RefusedBequestCheck extends AbstractCheck {
 	            return;
 	        }
 	        // find the first checked class (AST)
-	        DetailAST checkClassAST = ast.findFirstToken(TokenTypes.OBJBLOCK).findFirstToken(TokenTypes.CLASS_DEF);
+	        DetailAST checkedClassAST = ast.findFirstToken(TokenTypes.OBJBLOCK).findFirstToken(TokenTypes.CLASS_DEF);
 	        // reverse and check all classes 
-			while(checkClassAST != null && checkClassAST.toString().startsWith("CLASS_DEF[") ) {
-				// find father class name
-				// checked class (checkClassAST) extends from father class
-				if (checkClassAST.getChildCount(TokenTypes.EXTENDS_CLAUSE)>0)
+			while(checkedClassAST != null && checkedClassAST.toString().startsWith("CLASS_DEF[") ) {
+				// checked class (checkedClassAST) extends from father class
+				if (checkedClassAST.getChildCount(TokenTypes.EXTENDS_CLAUSE)>0)
 		        {
-		        	fatherClassName=checkClassAST.findFirstToken(TokenTypes.EXTENDS_CLAUSE).findFirstToken(TokenTypes.IDENT).getText();
+		        	fatherClassName=checkedClassAST.findFirstToken(TokenTypes.EXTENDS_CLAUSE).findFirstToken(TokenTypes.IDENT).getText();
 		        }    
-		        else if (checkClassAST.getChildCount(TokenTypes.IMPLEMENTS_CLAUSE)>0)       // checked class (checkClassAST) implements from father interface
+		        else if (checkedClassAST.getChildCount(TokenTypes.IMPLEMENTS_CLAUSE)>0)       // checked class (checkedClassAST) implements from an interface or interfaces
 		        {
-		        	fatherClassName=checkClassAST.findFirstToken(TokenTypes.IMPLEMENTS_CLAUSE).findFirstToken(TokenTypes.IDENT).getText();
+		        	fatherClassName=checkedClassAST.findFirstToken(TokenTypes.IMPLEMENTS_CLAUSE).findFirstToken(TokenTypes.IDENT).getText();
 		        }	
-				// skip null and empty father class
+				// skip null and father classes without name
 				if (fatherClassName!=null && fatherClassName.length()>0 )
-				{   // get method number of child class (checked class (checkClassAST))
-					childMethodNum=checkClassAST.findFirstToken(TokenTypes.OBJBLOCK).getChildCount(TokenTypes.METHOD_DEF);
+				{   // get method number of child class (checked class (checkedClassAST))
+					childMethodNum=checkedClassAST.findFirstToken(TokenTypes.OBJBLOCK).getChildCount(TokenTypes.METHOD_DEF);
 					// get method number of father class whose name is $fatherClassName
 					fatherMethodNum=findMethodNumberByClassName(ast, fatherClassName);
 					// If child class has less methods than father class, there is Refused Bequest anti-pattern
 					if (childMethodNum<fatherMethodNum)
 					{
-						log(checkClassAST, "Refused Bequest", childMethodNum);
+						log(checkedClassAST, "Refused Bequest", childMethodNum);
 					}
 				}					
 				// find the next checked class from the sibling of current checked class 
-				checkClassAST = checkClassAST.getNextSibling();
+				checkedClassAST = checkedClassAST.getNextSibling();
 			}
 	  }
 	  
@@ -95,33 +94,32 @@ public class RefusedBequestCheck extends AbstractCheck {
 	            return;
 	        }
 	        // find the first checked class (AST)
-	        DetailAST checkClassAST = ast.findFirstToken(TokenTypes.OBJBLOCK).findFirstToken(TokenTypes.CLASS_DEF);
-	        // reverse and check all classes 
-			while(checkClassAST != null && checkClassAST.toString().startsWith("CLASS_DEF[") ) {
-				// find father class name
-				// checked class (checkClassAST) extends from father class
-				if (checkClassAST.getChildCount(TokenTypes.EXTENDS_CLAUSE)>0)
+	        DetailAST checkedClassAST = ast.findFirstToken(TokenTypes.OBJBLOCK).findFirstToken(TokenTypes.CLASS_DEF);
+	        // reverse and check all classes which are not null
+			while(checkedClassAST != null && checkedClassAST.toString().startsWith("CLASS_DEF[") ) {
+				// checked class (checkedClassAST) extends from father class
+				if (checkedClassAST.getChildCount(TokenTypes.EXTENDS_CLAUSE)>0)
 		        {
-		        	fatherClassName=checkClassAST.findFirstToken(TokenTypes.EXTENDS_CLAUSE).findFirstToken(TokenTypes.IDENT).getText();
+		        	fatherClassName=checkedClassAST.findFirstToken(TokenTypes.EXTENDS_CLAUSE).findFirstToken(TokenTypes.IDENT).getText();
 		        }    
-		        else if (checkClassAST.getChildCount(TokenTypes.IMPLEMENTS_CLAUSE)>0)       // checked class (checkClassAST) implements from father interface
+		        else if (checkedClassAST.getChildCount(TokenTypes.IMPLEMENTS_CLAUSE)>0)       // checked class (checkedClassAST) implements from an interface or interfaces
 		        {
-		        	fatherClassName=checkClassAST.findFirstToken(TokenTypes.IMPLEMENTS_CLAUSE).findFirstToken(TokenTypes.IDENT).getText();
+		        	fatherClassName=checkedClassAST.findFirstToken(TokenTypes.IMPLEMENTS_CLAUSE).findFirstToken(TokenTypes.IDENT).getText();
 		        }	
-				// skip null and empty father class
+				// skip null and father classes without name
 				if (fatherClassName!=null && fatherClassName.length()>0 )
-				{   // get method number of child class (checked class (checkClassAST))
-					childMethodNum=checkClassAST.findFirstToken(TokenTypes.OBJBLOCK).getChildCount(TokenTypes.METHOD_DEF);
+				{   // get method number of child class (checked class (checkedClassAST))
+					childMethodNum=checkedClassAST.findFirstToken(TokenTypes.OBJBLOCK).getChildCount(TokenTypes.METHOD_DEF);
 					// get method number of father class whose name is $fatherClassName
 					fatherMethodNum=findMethodNumberByClassName(ast, fatherClassName);
 					// If child class has less methods than father class, there is Refused Bequest anti-pattern
 					if (childMethodNum<fatherMethodNum)
 					{
-						System.out.println(checkClassAST.getText()+ "has a Refused Bequest anti-pattern");
+						System.out.println(checkedClassAST.getText()+ "has a Refused Bequest anti-pattern");
 					}
 				}					
 				// find the next checked class from the sibling of current checked class 
-				checkClassAST = checkClassAST.getNextSibling();
+				checkedClassAST = checkedClassAST.getNextSibling();
 			}
 	  }
 	  
