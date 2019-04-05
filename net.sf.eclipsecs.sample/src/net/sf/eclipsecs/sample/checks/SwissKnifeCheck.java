@@ -7,7 +7,8 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 public class SwissKnifeCheck extends AbstractCheck {
 
 	private int max = 2;
-
+	private int interfaceCounter = 0;
+	
 	public void setMax(int limit) {
 	    max = limit;
 	  }
@@ -34,7 +35,7 @@ public class SwissKnifeCheck extends AbstractCheck {
 		DetailAST objBlock = ast.findFirstToken(TokenTypes.IMPLEMENTS_CLAUSE);
 		
 
-		int interfaceCounter = objBlock.getChildCount(TokenTypes.IDENT);
+		interfaceCounter = objBlock.getChildCount(TokenTypes.IDENT);
 		System.out.println("number of interfaces: " + interfaceCounter + "\n");
 		
 		if (interfaceCounter > max) {
@@ -43,5 +44,14 @@ public class SwissKnifeCheck extends AbstractCheck {
     	}
 
 	}
+	
+public boolean getCount() {
+	if(interfaceCounter>max)
+		return true;
+	else
+		return false;
+		
+	}
+	
 
 }

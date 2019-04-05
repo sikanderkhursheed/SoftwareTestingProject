@@ -1,6 +1,6 @@
 package net.sf.eclipses.sample.tests;
 
-public class ClassA {
+public class FeatureEnvyScenario {
 	
 	ClassB b1;
 	ClassB b2;
@@ -12,7 +12,7 @@ public class ClassA {
 	}
 	
 	public static void main(String[] args) {
-		ClassA a = new ClassA(); 
+		FeatureEnvyScenario a = new FeatureEnvyScenario(); 
 		a.show();
 	}
 	

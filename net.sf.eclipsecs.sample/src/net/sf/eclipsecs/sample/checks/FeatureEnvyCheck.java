@@ -8,11 +8,12 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 public class FeatureEnvyCheck extends AbstractCheck{
 
 	private int max = 2;
-	private int count ;
+	private int count = 0;
 	public void setMax(int limit) {
 	    max = limit;
 	  }
-
+	
+		
 	@Override
 	  public int[] getAcceptableTokens() {
 	    return new int[] { TokenTypes.METHOD_CALL, TokenTypes.VARIABLE_DEF};
@@ -32,7 +33,7 @@ public class FeatureEnvyCheck extends AbstractCheck{
 			return;
 		}
 		else {
-			count =0;
+			
 			DetailAST objBlock = ast.findFirstToken(TokenTypes.OBJBLOCK);
 			DetailAST varBlock = objBlock.findFirstToken(TokenTypes.VARIABLE_DEF);
 			
@@ -67,5 +68,13 @@ public class FeatureEnvyCheck extends AbstractCheck{
 	public int[] getRequiredTokens() {
 	    return new int[0];
 	  }
+	
+	public boolean getCount() {
+		if(count>max)
+			return true;
+		else
+			return false;
+		
+	}
 
 	}

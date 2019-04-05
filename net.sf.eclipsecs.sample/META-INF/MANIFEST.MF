@@ -5,7 +5,8 @@ Bundle-SymbolicName: net.sf.eclipsecs.sample;singleton:=true
 Bundle-Version: 8.5.1.qualifier
 Require-Bundle: net.sf.eclipsecs.checkstyle,
  net.sf.eclipsecs.core,
- net.sf.eclipsecs.ui
+ net.sf.eclipsecs.ui,
+ org.junit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: http://eclipse-cs.sf.net/
