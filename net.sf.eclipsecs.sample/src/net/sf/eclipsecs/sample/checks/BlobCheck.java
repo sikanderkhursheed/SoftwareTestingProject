@@ -5,9 +5,9 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 
 public class BlobCheck extends AbstractCheck {
-	  private int max = 10;  // The maximal number of method_definition, loop, variable_definition and method_call
+	  private int max = 10;  // The maximal number of class_definition, method_definition and variable_definition
 	   
-	  private int count=0;  //  The number of method_definition, loop, variable_definition and method_call
+	  private int count=0;  //  The number of class_definition, method_definition and variable_definition
 	  
 	  @Override
 	  public int[] getAcceptableTokens() {
@@ -48,12 +48,11 @@ public class BlobCheck extends AbstractCheck {
         if ( objBlock == null) {
             return;
         }
-	    // count the number of direct children of the OBJBLOCK having METHOD_DEFS, 
-	    //LITERAL_FOR, LITERAL_WHILE, DO_WHILE, VARIABLE_DEF and METHOD_CALL
-	    count = objBlock.getChildCount(TokenTypes.METHOD_DEF)    + objBlock.getChildCount(TokenTypes.LITERAL_FOR)
-		      + objBlock.getChildCount(TokenTypes.LITERAL_WHILE) + objBlock.getChildCount(TokenTypes.DO_WHILE)
-		      + objBlock.getChildCount(TokenTypes.VARIABLE_DEF)  + objBlock.getChildCount(TokenTypes.METHOD_CALL);
-	 // There is Blob (Gob Class) anti-pattern if limit is reached
+	    // add the OBJBLOCK direct children numbers of CLASS_DEF, METHOD_DEF and VARIABLE_DEF
+	    count = objBlock.getChildCount(TokenTypes.CLASS_DEF) 
+	    	  + objBlock.getChildCount(TokenTypes.METHOD_DEF)
+		      + objBlock.getChildCount(TokenTypes.VARIABLE_DEF);  
+	    // There is Blob (Gob Class) anti-pattern if limit is reached
 	    if (count >= max) {
 	      log(ast.getLineNo(), "blob", max);
 	    }
@@ -71,11 +70,10 @@ public class BlobCheck extends AbstractCheck {
 	        if ( objBlock == null) {
 	            return;
 	        }
-		    // count the number of direct children of the OBJBLOCK having METHOD_DEFS, 
-		    //LITERAL_FOR, LITERAL_WHILE, DO_WHILE, VARIABLE_DEF and METHOD_CALL
-		    count = objBlock.getChildCount(TokenTypes.METHOD_DEF)	 + objBlock.getChildCount(TokenTypes.LITERAL_FOR)
-			      + objBlock.getChildCount(TokenTypes.LITERAL_WHILE) + objBlock.getChildCount(TokenTypes.DO_WHILE)
-			      + objBlock.getChildCount(TokenTypes.VARIABLE_DEF)	 + objBlock.getChildCount(TokenTypes.METHOD_CALL);
+		    // add the OBJBLOCK direct children numbers of CLASS_DEF, METHOD_DEF and VARIABLE_DEF
+		    count = objBlock.getChildCount(TokenTypes.CLASS_DEF) 
+		    	  + objBlock.getChildCount(TokenTypes.METHOD_DEF)
+			      + objBlock.getChildCount(TokenTypes.VARIABLE_DEF); 
 		    // There is Blob (Gob Class) anti-pattern if limit is reached
 		    if (count >= max) {
 		    	System.out.println(ast.getText()+ "has a blob (god class) anti-pattern");
