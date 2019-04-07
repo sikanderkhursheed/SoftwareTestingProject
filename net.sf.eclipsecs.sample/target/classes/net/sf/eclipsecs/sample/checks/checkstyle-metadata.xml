@@ -20,12 +20,16 @@
                 <description>The maximum number of foreign variables (objects) allowed.</description>
             </property-metadata>
         </rule-metadata>
-        		<rule-metadata name="%TypeChecking.name" internal-name="TypeChecking" parent="TreeWalker">
+        <rule-metadata name="%TypeChecking.name" internal-name="TypeChecking" parent="TreeWalker">
             <alternative-name internal-name="net.sf.eclipsecs.sample.checks.TypeChecking" />
             <description>%TypeChecking.desc</description>
             <property-metadata name="max" datatype="Integer" default-value="2">
                 <description>The maximum number of conditional statemsts.</description>
             </property-metadata>
+        </rule-metadata>
+        <rule-metadata name="%DuplicateCode.name" internal-name="DuplicateCodeCheck" parent="TreeWalker">
+            <alternative-name internal-name="net.sf.eclipsecs.sample.checks.DuplicateCodeCheck" />
+            <description>%DuplicateCode.desc</description>
         </rule-metadata>
               
     </rule-group-metadata>
