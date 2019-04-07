@@ -13,6 +13,15 @@ public class DuplicateCodeCheck extends AbstractCheck{
         return new int[] { TokenTypes.CLASS_DEF};
     }
 
+	@Override
+	public int[] getAcceptableTokens() {
+		return getDefaultTokens();
+	}
+	
+	@Override
+	public int[] getRequiredTokens() {
+		return getDefaultTokens();
+	}
 
 	@Override
 	public void visitToken(DetailAST detailast) {
@@ -29,29 +38,17 @@ public class DuplicateCodeCheck extends AbstractCheck{
 				ast = ast.getNextSibling();
 			}
 			
-			for(int i = 0; i < list.size(); i++) {
-				for(int j = i+1; j < list.size(); j++) {
-					if(list.get(i).equalsTree((list.get(j)))) {
+			for(int block1 = 0; block1 < list.size(); block1++) {
+				for(int block2 = block1+1; block2 < list.size(); block2++) {
+					if(list.get(block1).equalsTree((list.get(block2)))) {
 						log(ast, "duplicatecode", 0);
-						//detect();
-						
 					}
 				}
 			}
 		}	
-	@Override
-	public int[] getAcceptableTokens() {
-		return getDefaultTokens();
-	}
-	
-	@Override
-	public int[] getRequiredTokens() {
-		return getDefaultTokens();
-	}
 	
 	public int detect() {
+		System.out.print("Code duplication in the giving program");
 		return 1;
-	}
-	
-	
+	}	
 }
