@@ -6,15 +6,13 @@
     <rule-group-metadata name="My custom checks"  priority="1600">
         <description>%MyCustomChecks.desc</description>
 
-        <rule-metadata name="%MethodLimit.name" internal-name="MethodLimit" parent="TreeWalker">
-            <alternative-name internal-name="net.sf.eclipsecs.sample.checks.MethodLimitCheck" />
-            <description>%MethodLimit.desc</description>
+        <rule-metadata name="%SwissKnife.name" internal-name="SwissKnife" parent="TreeWalker">
+            <alternative-name internal-name="net.sf.eclipsecs.sample.checks.SwissKnifeCheck" />
+            <description>%SwissKnife.desc</description>
             <property-metadata name="max" datatype="Integer" default-value="2">
-                <description>The maximum number of allowed methods.</description>
+                <description>The maximum number of interfaces allowed.</description>
             </property-metadata>
-            <quickfix classname="net.sf.eclipsecs.sample.checks.MethodLimitQuickfix" />
         </rule-metadata>
-
        
         <rule-metadata name="%Blob.name" internal-name="Blob" parent="TreeWalker">
             <alternative-name internal-name="net.sf.eclipsecs.sample.checks.BlobCheck" />
@@ -33,6 +31,25 @@
             </property-metadata -->                
             <!--  <quickfix classname="net.sf.eclipsecs.sample.checks.BlobCheckQuickfix" /> -->
         </rule-metadata>               
+
+        <rule-metadata name="%FeatureEnvy.name" internal-name="FeatureEnvy" parent="TreeWalker">
+            <alternative-name internal-name="net.sf.eclipsecs.sample.checks.FeatureEnvy" />
+            <description>%FeatureEnvy.desc</description>
+            <property-metadata name="max" datatype="Integer" default-value="2">
+                <description>The maximum number of foreign variables (objects) allowed.</description>
+            </property-metadata>
+        </rule-metadata>
+        <rule-metadata name="%TypeChecking.name" internal-name="TypeChecking" parent="TreeWalker">
+            <alternative-name internal-name="net.sf.eclipsecs.sample.checks.TypeChecking" />
+            <description>%TypeChecking.desc</description>
+            <property-metadata name="max" datatype="Integer" default-value="2">
+                <description>The maximum number of conditional statemsts.</description>
+            </property-metadata>
+        </rule-metadata>
+        <rule-metadata name="%DuplicateCode.name" internal-name="DuplicateCodeCheck" parent="TreeWalker">
+            <alternative-name internal-name="net.sf.eclipsecs.sample.checks.DuplicateCodeCheck" />
+            <description>%DuplicateCode.desc</description>
+        </rule-metadata>
               
     </rule-group-metadata>
 </checkstyle-metadata>
