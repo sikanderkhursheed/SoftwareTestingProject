@@ -26,6 +26,7 @@
             <message key="typecheck" value="Only {0} conditional statements allowed." />
         </module>
         <module name="DuplicateCode">
+        <property name="a" value="0" />
         <message key="duplicatecode" value="Duplicate code is not allowed" />
         </module>
         <module name="Regexp">

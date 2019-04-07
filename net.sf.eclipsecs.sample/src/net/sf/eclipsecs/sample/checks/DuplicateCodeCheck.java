@@ -8,6 +8,8 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 
 public class DuplicateCodeCheck extends AbstractCheck{
 
+	private int a = 0;
+
 	@Override
     public int[] getDefaultTokens() {
         return new int[] { TokenTypes.CLASS_DEF};
@@ -34,14 +36,18 @@ public class DuplicateCodeCheck extends AbstractCheck{
 			DetailAST ast = detailast.findFirstToken(TokenTypes.OBJBLOCK).findFirstToken(TokenTypes.METHOD_DEF);
 			
 			while(ast != null) {
-				list.add(ast.findFirstToken(TokenTypes.SLIST));
-				ast = ast.getNextSibling();
+			    try {
+			    	list.add(ast.findFirstToken(TokenTypes.SLIST));
+			    	ast = ast.getNextSibling();
+			    }
+			    catch(Exception e) {
+			    	
+			    }
 			}
-			
 			for(int block1 = 0; block1 < list.size(); block1++) {
 				for(int block2 = block1+1; block2 < list.size(); block2++) {
 					if(list.get(block1).equalsTree((list.get(block2)))) {
-						log(ast, "duplicatecode", 0);
+						log(detailast.getLineNo(), "duplicatecode", a);
 					}
 				}
 			}
