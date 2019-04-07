@@ -1,4 +1,4 @@
-package net.sf.eclipses.sample.tests;
+package net.sf.eclipsecs.sample.checks;
 
 import static org.junit.Assert.*;
 
@@ -11,8 +11,6 @@ import com.puppycrawl.tools.checkstyle.JavaParser;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.FileContents;
 import com.puppycrawl.tools.checkstyle.api.FileText;
-
-import net.sf.eclipsecs.sample.checks.FeatureEnvyCheck;
 
 
 public class FeatureEnvyTest {

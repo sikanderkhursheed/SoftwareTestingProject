@@ -3,8 +3,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="H:/PHD_semesters/Spring_2019/software_testing/project_materials/checkstyle-8.17-all.jar"/>
-	<classpathentry kind="lib" path="G:/SoftTesting-master/SoftwareTestingProject/libraries/mockito-all-1.10.19.jar"/>
-	<classpathentry kind="lib" path="G:/SoftTesting-master/SoftwareTestingProject/libraries/powermock-mockito-release-full-1.6.4-full.jar"/>
+	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/Project/SoftwareTestingProject/libraries/checkstyle-checkstyle-8.17.zip"/>
+	<classpathentry kind="lib" path="C:/Users/HP/Desktop/Semester 3/Software Testing/Project/SoftwareTestingProject/libraries/powermock-mockito-release-full-1.6.4-full.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
