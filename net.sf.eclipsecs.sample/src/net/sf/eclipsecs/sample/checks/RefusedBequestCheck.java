@@ -5,9 +5,9 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 
 public class RefusedBequestCheck extends AbstractCheck {
-	 int childMethodNum=0;                 // Method number in child class
-	 int fatherMethodNum=0;	               // Method number in father class				
-	 String fatherClassName="";            // Father class name
+	 private int childMethodNum=0;                 // Method number in child class
+	 private int fatherMethodNum=0;	               // Method number in father class				
+	 private String fatherClassName="";            // Father class name
 	  @Override
 	  public int[] getAcceptableTokens() {
 	    return new int[] { TokenTypes.CLASS_DEF, TokenTypes.INTERFACE_DEF };
@@ -87,7 +87,10 @@ public class RefusedBequestCheck extends AbstractCheck {
 			}
 	  }
 	  
-      //  public void visitTokenWithLog(DetailAST ast) will be tested using Junit
+	/**
+	 * @param ast
+	 * will be used by Junit
+	 */
 	  public void visitTokenWithoutLog(DetailAST ast) {
 		    // don't handle the ast is null
 	        if ( ast == null) {

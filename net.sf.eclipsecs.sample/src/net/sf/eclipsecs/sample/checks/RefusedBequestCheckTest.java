@@ -20,14 +20,13 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.FileContents;
 import com.puppycrawl.tools.checkstyle.api.FileText;
 
-import static org.junit.Assert.*;
+class RefusedBequestCheckTest {
 
-class BlobCheckTest {
+	RefusedBequestCheck check = new RefusedBequestCheck();
 
-	BlobCheck check = new BlobCheck();
-	 
 	  @Before
 	  public void setUp() throws Exception {
+
 	  }
 	  
 	 @Test
@@ -44,45 +43,41 @@ class BlobCheckTest {
 	 public void testGetRequiredTokensNotNull() {
 	    assertNotNull("Required tokens should not be null", check.getRequiredTokens());
 	 }
-	 
-	 // test the function setMax (getMax())
-	 @Test	   
-	 public void testSetMax(){
-		 check.setMax(10);
-		 assertEquals(10, check.getMax());
-	 }	
-	 
-	 // test the function visitTokenWithoutLog 
+		    
+    // test the function visitTokenWithoutLog 
 	 @Test
-	 public void testvisitTokenWithoutLog() throws IOException, CheckstyleException{		 
+	 public void testvisitTokenWithoutLog() throws IOException, CheckstyleException{
 		FileText text;
 		FileContents contents;
-		DetailAST rootAST;		
+		DetailAST rootAST;		 
 		// get project path
 		String projectPath=System.getProperty("user.dir").replace("/", File.separator).replace("\\", File.separator);  
 		 // get test scenario file
 		String testScenarioFile=projectPath+File.separator+"src"+File.separator+"net"+File.separator+"sf"+File.separator
-				               +"eclipses"+File.separator+"sample"+File.separator+"tests"+File.separator+"BlobTestScenario.java";	
+				               +"eclipses"+File.separator+"sample"+File.separator+"tests"+File.separator+"RefusedBequestTestScenario.java";	
 		// create /Temp folder
      	File file1=new File(File.separator+"Temp");
  		file1.mkdir(); 		
- 		// copy test scenario file to /Temp folder without package line
- 		copyFileWithoutPackage(testScenarioFile,File.separator+"temp"+File.separator+"BlobTestScenario.java");       
+ 		// copy test scenario file to /Temp folder
+ 		copyFileWithoutPackage(testScenarioFile,File.separator+"temp"+File.separator+"RefusedBequestTestScenario.java");       
  		
-		text = new FileText(new File(File.separator+"temp"+File.separator+"BlobTestScenario.java"), System.getProperty("file.encoding", "UTF-8"));
+		text = new FileText(new File(File.separator+"temp"+File.separator+"RefusedBequestTestScenario.java"), System.getProperty("file.encoding", "UTF-8"));
+		
+		text = new FileText(new File("C:/Temp/RefusedBequestTestScenario.java"), System.getProperty("file.encoding", "UTF-8"));
 		contents = new FileContents(text);
 		rootAST = JavaParser.parse(contents);
+		
 		check.visitTokenWithoutLog(rootAST);
-        // Function visitTokenWithoutLog should let the count value is greater than zero and we use getCount() to get the count value.
-		System.out.println("check.getCount()="+check.getCount());
-        assertTrue(check.getCount()>0);
-     // Function visitTokenWithoutLog should let the count value is greater than or equals to max value set.
-		System.out.println("check.getMax()="+check.getMax());
-        assertTrue(check.getCount()>=check.getMax()); 
-        
-        
+		// visitTokenWithoutLog should find childMethodNum
+		assertTrue(check.getChildMethodNum()>0);	
+		// visitTokenWithoutLog should find fatherMethodNum
+		assertTrue(check.getFatherMethodNum()>0);	
+		// visitTokenWithoutLog should find fatherClassName
+		assertTrue((check.getFatherClassName()).length()>0);		
+		// The method number of child class should be less than that of father class.
+		assertTrue(check.getChildMethodNum()<check.getFatherMethodNum());
 	 } 
-	 
+
 	/**
 	 * @param source, dest
 	 * @return copy source file to dest file without package line
@@ -117,3 +112,4 @@ class BlobCheckTest {
 			}
 	 }
 }
+
