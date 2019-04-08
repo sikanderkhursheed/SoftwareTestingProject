@@ -76,7 +76,7 @@ public class BlobCheck extends AbstractCheck {
 			      + objBlock.getChildCount(TokenTypes.VARIABLE_DEF); 
 		    // There is Blob (Gob Class) anti-pattern if limit is reached
 		    if (count >= max) {
-		    	System.out.println(ast.getText()+ "has a blob (god class) anti-pattern");
+		    	System.out.println("The source file line "+ast.getLineNo()+ " has a blob (god class) anti-pattern");
 		    }
 		  }  
 }

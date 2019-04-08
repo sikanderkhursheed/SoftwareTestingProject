@@ -115,7 +115,7 @@ public class RefusedBequestCheck extends AbstractCheck {
 					// If child class has less methods than father class, there is Refused Bequest anti-pattern
 					if (childMethodNum<fatherMethodNum)
 					{
-						System.out.println(checkedClassAST.getText()+ "has a Refused Bequest anti-pattern");
+						System.out.println("The source file line "+checkedClassAST.getLineNo()+ " has a Refused Bequest anti-pattern");
 					}
 				}					
 				// find the next checked class from the sibling of current checked class 
