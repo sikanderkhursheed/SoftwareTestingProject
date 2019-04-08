@@ -39,6 +39,8 @@ public class SwissKnifeCheck extends AbstractCheck {
 		System.out.println("number of interfaces: " + interfaceCounter + "\n");
 		
 		if (interfaceCounter > max) {
+			System.out.println("Swiss Knife antipattern found ! \n");
+			System.out.println("max. number of interfaces allowed is " +max);
 			 log(ast.getLineNo(), "swissknife", max);
 		
     	}

@@ -22,7 +22,7 @@ import com.puppycrawl.tools.checkstyle.api.FileText;
 
 import static org.junit.Assert.*;
 
-class BlobCheckTest {
+public class BlobCheckTest {
 
 	BlobCheck check = new BlobCheck();
 	 
