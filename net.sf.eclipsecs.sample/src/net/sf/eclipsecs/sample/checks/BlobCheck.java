@@ -58,7 +58,10 @@ public class BlobCheck extends AbstractCheck {
 	    }
 	  }  
 
-      //  public void visitTokenWithLog(DetailAST ast) will be tested using Junit
+	/**
+	 * @param ast
+	 * will be used by Junit
+	 */
 	  public void visitTokenWithoutLog(DetailAST ast) {
 			// don't handle null ast
 			if ( ast == null) {
