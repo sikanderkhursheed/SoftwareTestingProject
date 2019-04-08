@@ -5,7 +5,7 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 
 public class BlobCheck extends AbstractCheck {
-	  private int max = 10;  // The maximal number of class_definition, method_definition and variable_definition
+	  private int max = 20;  // The number threshold of method_definition and variable_definition
 	   
 	  private int count=0;  //  The number of class_definition, method_definition and variable_definition
 	  
@@ -48,9 +48,8 @@ public class BlobCheck extends AbstractCheck {
         if ( objBlock == null) {
             return;
         }
-	    // add the OBJBLOCK direct children numbers of CLASS_DEF, METHOD_DEF and VARIABLE_DEF
-	    count = objBlock.getChildCount(TokenTypes.CLASS_DEF) 
-	    	  + objBlock.getChildCount(TokenTypes.METHOD_DEF)
+	    // add the OBJBLOCK direct children numbers of METHOD_DEF and VARIABLE_DEF
+	    count = objBlock.getChildCount(TokenTypes.METHOD_DEF)
 		      + objBlock.getChildCount(TokenTypes.VARIABLE_DEF);  
 	    // There is Blob (Gob Class) anti-pattern if limit is reached
 	    if (count >= max) {
@@ -73,11 +72,10 @@ public class BlobCheck extends AbstractCheck {
 	        if ( objBlock == null) {
 	            return;
 	        }
-		    // add the OBJBLOCK direct children numbers of CLASS_DEF, METHOD_DEF and VARIABLE_DEF
-		    count = objBlock.getChildCount(TokenTypes.CLASS_DEF) 
-		    	  + objBlock.getChildCount(TokenTypes.METHOD_DEF)
+		    // add the OBJBLOCK direct children numbers of METHOD_DEF and VARIABLE_DEF
+		    count = objBlock.getChildCount(TokenTypes.METHOD_DEF)
 			      + objBlock.getChildCount(TokenTypes.VARIABLE_DEF); 
-		    // There is Blob (Gob Class) anti-pattern if limit is reached
+		    // There is Blob (Gob Class) anti-pattern if limit (20) is reached according to the rule "a number of methods and attributes higher than 20"
 		    if (count >= max) {
 		    	System.out.println("The source file line "+ast.getLineNo()+ " has a blob (god class) anti-pattern");
 		    }
