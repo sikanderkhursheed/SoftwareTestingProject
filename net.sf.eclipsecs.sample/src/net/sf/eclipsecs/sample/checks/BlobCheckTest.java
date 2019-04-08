@@ -47,7 +47,7 @@ class BlobCheckTest {
 	 
 	 // test the function setMax (getMax())
 	 @Test	   
-	 public void testsetMax(){
+	 public void testSetMax(){
 		 check.setMax(10);
 		 assertEquals(10, check.getMax());
 	 }	
