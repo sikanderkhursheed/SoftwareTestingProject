@@ -1,3 +1,11 @@
+/**
+ * File: src/net.sf.eclipsecs.sample.checks/BlobCheckTest.java
+ * -------------------------------------------------------------------------------------------
+ * Date			Author          Changes
+ * -------------------------------------------------------------------------------------------
+ * 04/08/2019	xiaoqin Fu		created; Test cases for Blob Check (Deliverable 1)
+ * 04/14/2019	xiaoqin Fu		updated; Adding and updating test cases for Blob Check (Deliverable 2)
+*/
 package net.sf.eclipsecs.sample.checks;
 
 import static org.junit.Assert.assertNotNull;
@@ -45,11 +53,30 @@ class BlobCheckTest {
 	    assertNotNull("Required tokens should not be null", check.getRequiredTokens());
 	 }
 	 
+	 // test max default value
+	 @Test
+	 public void testDefaultMax(){
+		 //  max default value should be 20
+		 assertEquals(20, check.getMax());
+	 }
+	 
 	 // test the function setMax (getMax())
 	 @Test	   
 	 public void testSetMax(){
+		 check.setMax(-1);
+		 assertEquals(-1, check.getMax());
+		 check.setMax(0);
+		 assertEquals(0, check.getMax());
+		 check.setMax(1);
+		 assertEquals(1, check.getMax());
 		 check.setMax(10);
 		 assertEquals(10, check.getMax());
+		 check.setMax(19);
+		 assertEquals(19, check.getMax());
+		 check.setMax(20);
+		 assertEquals(20, check.getMax());
+		 check.setMax(21);
+		 assertEquals(21, check.getMax());
 	 }	
 	 
 	 // test the function visitTokenWithoutLog 
@@ -74,10 +101,10 @@ class BlobCheckTest {
 		rootAST = JavaParser.parse(contents);
 		check.visitTokenWithoutLog(rootAST);
         // Function visitTokenWithoutLog should let the count value is greater than zero and we use getCount() to get the count value.
-		System.out.println("check.getCount()="+check.getCount());
+		//System.out.println("check.getCount()="+check.getCount());
         assertTrue(check.getCount()>0);
      // Function visitTokenWithoutLog should let the count value is greater than or equals to max value set.
-		System.out.println("check.getMax()="+check.getMax());
+		//System.out.println("check.getMax()="+check.getMax());
         assertTrue(check.getCount()>=check.getMax()); 
         
         
