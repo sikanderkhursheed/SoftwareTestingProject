@@ -1,6 +1,17 @@
+/**
+ * File: src/net.sf.eclipsecs.sample.checks/RefusedBequestCheckTest.java
+ * -------------------------------------------------------------------------------------------
+ * Date			Author          Changes
+ * -------------------------------------------------------------------------------------------
+ * 04/08/2019	xiaoqin Fu		created; Test cases for Refused Bequest Check (Deliverable 1)
+ * 04/14/2019	xiaoqin Fu		updated; Adding and updating test cases for Refused Bequest Check (Deliverable 2)
+*/
 package net.sf.eclipsecs.sample.checks;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
@@ -43,7 +54,65 @@ public class RefusedBequestCheckTest {
 	 public void testGetRequiredTokensNotNull() {
 	    assertNotNull("Required tokens should not be null", check.getRequiredTokens());
 	 }
-		    
+	 
+	 // test childMethodNum default value
+	 @Test
+	 public void testDefaultChildMethodNum(){
+		//  childMethodNum default value should be 0
+		 assertEquals(0, check.getChildMethodNum());
+	 }
+
+	 // test fatherMethodNum default value
+	 @Test
+	 public void testDefaultFatherMethodNum(){
+		//  fatherMethodNum default value should be 0
+		 assertEquals(0, check.getFatherMethodNum());
+	 }
+
+	 // test fatherClassName default value
+	 @Test
+	 public void testDefaultFatherClassName(){
+		 String fatherClassNameReceived=check.getFatherClassName();
+		 // fatherClassName default value should be empty string with length 0
+		 assertEquals("", fatherClassNameReceived);
+		 assertEquals(0, fatherClassNameReceived.length());
+	 }
+	 
+	 // test the function setChildMethodNum (getChildMethodNum())
+	 @Test	   
+	 public void testSetChildMethodNum(){
+		 check.setChildMethodNum(-1);
+		 assertEquals(-1, check.getChildMethodNum());
+		 check.setChildMethodNum(0);
+		 assertEquals(0, check.getChildMethodNum());
+		 check.setChildMethodNum(1);
+		 assertEquals(1, check.getChildMethodNum());
+	 }	
+	 
+	 // test the function setFatherMethodNum (getFatherMethodNum())
+	 @Test	   
+	 public void testSetFatherMethodNum(){
+		 check.setFatherMethodNum(-1);
+		 assertEquals(-1, check.getFatherMethodNum());
+		 check.setFatherMethodNum(0);
+		 assertEquals(0, check.getFatherMethodNum());
+		 check.setFatherMethodNum(1);
+		 assertEquals(1, check.getFatherMethodNum());
+	 }	
+	 
+	 // test the function setFatherClassName (getFatherClassName())
+	 @Test	   
+	 public void testSetFatherClassName(){
+		 check.setFatherClassName("a");
+		 assertEquals("a", check.getFatherClassName());
+		 check.setFatherClassName("testclass");
+		 assertEquals("testclass", check.getFatherClassName());
+		 check.setFatherClassName("class1234567890123456789012345678901234567890");
+		 assertEquals("class1234567890123456789012345678901234567890", check.getFatherClassName());
+		 check.setFatherClassName("");
+		 assertEquals("", check.getFatherClassName());
+
+	 }	
     // test the function visitTokenWithoutLog 
 	 @Test
 	 public void testvisitTokenWithoutLog() throws IOException, CheckstyleException{
