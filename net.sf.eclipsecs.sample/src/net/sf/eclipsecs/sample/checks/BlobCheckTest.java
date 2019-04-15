@@ -17,7 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import com.puppycrawl.tools.checkstyle.JavaParser;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
@@ -28,7 +28,8 @@ import com.puppycrawl.tools.checkstyle.api.FileText;
 import static org.junit.Assert.*;
 
 
-class BlobCheckTest {
+public class BlobCheckTest {
+
 
 	BlobCheck check = new BlobCheck();
 	 

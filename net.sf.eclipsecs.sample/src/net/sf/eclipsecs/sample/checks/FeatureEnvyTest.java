@@ -48,9 +48,7 @@ public class FeatureEnvyTest {
 	 @Test (expected = NullPointerException.class)
 	    public void testVisitToken() throws Throwable {
 	        DetailAST detailast = rootAST.getNextSibling();
-	        //DetailAST block = rootAST.findFirstToken(TokenTypes.OBJBLOCK);
-	        //DetailAST var = block.findFirstToken(TokenTypes.VARIABLE_DEF);
-	        
+	        	        
 	        f.visitToken(detailast);
 	        assertTrue(f.getCount());
 	    }

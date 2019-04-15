@@ -23,7 +23,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import com.puppycrawl.tools.checkstyle.JavaParser;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
@@ -31,7 +31,7 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.FileContents;
 import com.puppycrawl.tools.checkstyle.api.FileText;
 
-class RefusedBequestCheckTest {
+public class RefusedBequestCheckTest {
 
 	RefusedBequestCheck check = new RefusedBequestCheck();
 
@@ -148,7 +148,7 @@ class RefusedBequestCheckTest {
  		
 		text = new FileText(new File(File.separator+"temp"+File.separator+"RefusedBequestTestScenario.java"), System.getProperty("file.encoding", "UTF-8"));
 		
-		text = new FileText(new File("C:/Temp/RefusedBequestTestScenario.java"), System.getProperty("file.encoding", "UTF-8"));
+		text = new FileText(new File(File.separator+"temp"+File.separator+"RefusedBequestTestScenario.java"), System.getProperty("file.encoding", "UTF-8"));
 		contents = new FileContents(text);
 		rootAST = JavaParser.parse(contents);
 		

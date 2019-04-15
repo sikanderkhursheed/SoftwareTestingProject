@@ -58,8 +58,12 @@ public class FeatureEnvyCheck extends AbstractCheck{
 				
 			}
 			
-			if(count>max)
+			if(count>max) {
+				System.out.println("Feature Envy Antipattern found!\n");
+				System.out.println("max. number of foreign variables(objects) allowed is " +max);
 				log(ast.getLineNo(), "featureenvy", max);
+				
+			}
 		}
 		
 	}
@@ -70,8 +74,9 @@ public class FeatureEnvyCheck extends AbstractCheck{
 	  }
 	
 	public boolean getCount() {
-		if(count>max)
+		if(count>max) 
 			return true;
+		
 		else
 			return false;
 		
