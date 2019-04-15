@@ -29,8 +29,10 @@ public class BlobCheck extends AbstractCheck {
 	  }
 	  public int getMax() {
 		    return max;
-	  }
-	  
+	  }	  
+	  public void setCount(int count) {
+		    this.count = count;
+		  }
 	  public int getCount() {
 		    return count;
 	  }
@@ -52,6 +54,7 @@ public class BlobCheck extends AbstractCheck {
 	    count = objBlock.getChildCount(TokenTypes.METHOD_DEF)
 		      + objBlock.getChildCount(TokenTypes.VARIABLE_DEF);  
 	    // There is Blob (Gob Class) anti-pattern if limit is reached
+	    //System.out.println("count ="+count+" max ="+max); 
 	    if (count >= max) {
 	      log(ast.getLineNo(), "blob", max);
 	    }

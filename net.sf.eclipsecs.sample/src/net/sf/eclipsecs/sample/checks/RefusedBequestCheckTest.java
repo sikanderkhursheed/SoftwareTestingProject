@@ -3,7 +3,7 @@
  * -------------------------------------------------------------------------------------------
  * Date			Author          Changes
  * -------------------------------------------------------------------------------------------
- * 04/08/2019	xiaoqin Fu		created; Test cases for Refused Bequest Check (Deliverable 1)
+ * 04/08/2019	xiaoqin Fu		created; Black box and white box test cases for Refused Bequest Check (Deliverable 1)
  * 04/14/2019	xiaoqin Fu		updated; Adding and updating test cases for Refused Bequest Check (Deliverable 2)
 */
 package net.sf.eclipsecs.sample.checks;
@@ -80,24 +80,40 @@ class RefusedBequestCheckTest {
 	 
 	 // test the function setChildMethodNum (getChildMethodNum())
 	 @Test	   
-	 public void testSetChildMethodNum(){
+	 public void testSetChildMethodNum(){		 
+		 check.setChildMethodNum(Integer.MIN_VALUE);
+		 assertEquals(Integer.MIN_VALUE, check.getChildMethodNum());		 
+		 check.setChildMethodNum(-20);
+		 assertEquals(-20, check.getChildMethodNum());
 		 check.setChildMethodNum(-1);
-		 assertEquals(-1, check.getChildMethodNum());
-		 check.setChildMethodNum(0);
-		 assertEquals(0, check.getChildMethodNum());
+		 assertEquals(-1, check.getChildMethodNum());	
 		 check.setChildMethodNum(1);
 		 assertEquals(1, check.getChildMethodNum());
+		 check.setChildMethodNum(200);
+		 assertEquals(200, check.getChildMethodNum());
+		 check.setChildMethodNum(Integer.MAX_VALUE);
+		 assertEquals(Integer.MAX_VALUE, check.getChildMethodNum());
+		 check.setChildMethodNum(0);
+		 assertEquals(0, check.getChildMethodNum());	 
 	 }	
 	 
 	 // test the function setFatherMethodNum (getFatherMethodNum())
 	 @Test	   
 	 public void testSetFatherMethodNum(){
+		 check.setFatherMethodNum(Integer.MIN_VALUE);
+		 assertEquals(Integer.MIN_VALUE, check.getFatherMethodNum());		 
+		 check.setFatherMethodNum(-20);
+		 assertEquals(-20, check.getFatherMethodNum());
 		 check.setFatherMethodNum(-1);
 		 assertEquals(-1, check.getFatherMethodNum());
-		 check.setFatherMethodNum(0);
-		 assertEquals(0, check.getFatherMethodNum());
 		 check.setFatherMethodNum(1);
 		 assertEquals(1, check.getFatherMethodNum());
+		 check.setFatherMethodNum(200);
+		 assertEquals(200, check.getFatherMethodNum());
+		 check.setFatherMethodNum(Integer.MAX_VALUE);
+		 assertEquals(Integer.MAX_VALUE, check.getFatherMethodNum());
+		 check.setFatherMethodNum(0);
+		 assertEquals(0, check.getFatherMethodNum());
 	 }	
 	 
 	 // test the function setFatherClassName (getFatherClassName())
@@ -111,8 +127,8 @@ class RefusedBequestCheckTest {
 		 assertEquals("class1234567890123456789012345678901234567890", check.getFatherClassName());
 		 check.setFatherClassName("");
 		 assertEquals("", check.getFatherClassName());
-
 	 }	
+	 
     // test the function visitTokenWithoutLog 
 	 @Test
 	 public void testvisitTokenWithoutLog() throws IOException, CheckstyleException{
