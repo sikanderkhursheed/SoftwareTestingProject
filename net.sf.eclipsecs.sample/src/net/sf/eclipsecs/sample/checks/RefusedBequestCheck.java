@@ -70,12 +70,14 @@ public class RefusedBequestCheck extends AbstractCheck {
 		        {
 		        	fatherClassName=checkedClassAST.findFirstToken(TokenTypes.IMPLEMENTS_CLAUSE).findFirstToken(TokenTypes.IDENT).getText();
 		        }	
+				System.out.println("1 childMethodNum="+childMethodNum+" fatherMethodNum="+fatherMethodNum+" fatherClassName="+fatherClassName); 
 				// skip null and father classes without name
 				if (fatherClassName!=null && fatherClassName.length()>0 )
 				{   // get method number of child class (checked class (checkedClassAST))
 					childMethodNum=checkedClassAST.findFirstToken(TokenTypes.OBJBLOCK).getChildCount(TokenTypes.METHOD_DEF);
 					// get method number of father class whose name is $fatherClassName
 					fatherMethodNum=findMethodNumberByClassName(ast, fatherClassName);
+					System.out.println("2 childMethodNum="+childMethodNum+" fatherMethodNum="+fatherMethodNum+" fatherClassName="+fatherClassName); 
 					// If child class has less methods than father class, there is Refused Bequest anti-pattern
 					if (childMethodNum<fatherMethodNum)
 					{
@@ -115,6 +117,7 @@ public class RefusedBequestCheck extends AbstractCheck {
 					childMethodNum=checkedClassAST.findFirstToken(TokenTypes.OBJBLOCK).getChildCount(TokenTypes.METHOD_DEF);
 					// get method number of father class whose name is $fatherClassName
 					fatherMethodNum=findMethodNumberByClassName(ast, fatherClassName);
+					System.out.println("2 childMethodNum="+childMethodNum+" fatherMethodNum="+fatherMethodNum+" fatherClassName="+fatherClassName); 
 					// If child class has less methods than father class, there is Refused Bequest anti-pattern
 					if (childMethodNum<fatherMethodNum)
 					{
