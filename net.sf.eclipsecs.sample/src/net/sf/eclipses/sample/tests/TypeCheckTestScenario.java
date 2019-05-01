@@ -24,7 +24,7 @@ public class TypeCheckTestScenario{
 		 System.out.println("Number is negative.");
 		break;
 	case 3:
-        System.out.println("Number is 0.");
+       System.out.println("Number is 0.");
 		break;
 				
 	}

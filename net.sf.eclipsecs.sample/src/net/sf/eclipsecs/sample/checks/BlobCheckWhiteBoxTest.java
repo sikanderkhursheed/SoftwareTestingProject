@@ -19,7 +19,7 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.FileContents;
 import com.puppycrawl.tools.checkstyle.api.FileText;
 
-import static org.mockito.Mockito.*;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
