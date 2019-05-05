@@ -76,7 +76,23 @@ public class TypeCheckingBlackBoxTesting {
 	 
 	 // Test 2 Strong Equivalence class testing - Depth of if-else statement 2
 
-	    @Test
+	  @Test
+	    public void testVisitElseIfToken() throws Throwable {
+		  	DetailAST detailast = rootAST.getNextSibling();
+	        DetailAST block = detailast.findFirstToken(TokenTypes.OBJBLOCK);
+	        DetailAST method = block.findFirstToken(TokenTypes.METHOD_DEF);
+	        DetailAST slist = method.findFirstToken(TokenTypes.SLIST);
+	        DetailAST if1 = slist.findFirstToken(TokenTypes.LITERAL_IF);
+	        DetailAST else1 = if1.findFirstToken(TokenTypes.LITERAL_ELSE);
+	        DetailAST elseIf = else1.findFirstToken(TokenTypes.LITERAL_IF);
+
+	        check.visitToken(if1);
+	        check.visitToken(else1);
+	        check.visitToken(elseIf);
+	        assertEquals(1, check.getDepth());
+	    }
+	  
+	 @Test
 	    public void testIfDepth2() throws Throwable {
 
 		  	DetailAST detailast = rootAST.getNextSibling();
@@ -88,6 +104,10 @@ public class TypeCheckingBlackBoxTesting {
 	        DetailAST elseIf = else1.findFirstToken(TokenTypes.LITERAL_IF);
 	        DetailAST else2 = if1.findFirstToken(TokenTypes.LITERAL_ELSE);
 
+//	        assertEquals(if1.getType(), TokenTypes.LITERAL_IF);
+//	        assertEquals(else1.getType(), TokenTypes.LITERAL_ELSE);
+//	        assertEquals(elseIf.getType(), TokenTypes.LITERAL_IF);
+//	        assertEquals(else2.getType(), TokenTypes.LITERAL_ELSE);
 
 	        TypeChecking check = PowerMockito.spy(new TypeChecking());
 	        PowerMockito.doNothing().when(check, "log", Mockito.any(Integer.class), Mockito.any(String.class),
@@ -171,9 +191,11 @@ public class TypeCheckingBlackBoxTesting {
 	        DetailAST slist = method.findFirstToken(TokenTypes.SLIST);
 	        DetailAST switch1 = slist.findFirstToken(TokenTypes.LITERAL_SWITCH);
 	        DetailAST case1 = switch1.findFirstToken(TokenTypes.CASE_GROUP);
-	        DetailAST caseToken = case1.findFirstToken(TokenTypes.LITERAL_CASE);
-	        assertEquals(caseToken.getType(), TokenTypes.LITERAL_CASE);
-	        
+	        DetailAST case2 = case1.findFirstToken(TokenTypes.LITERAL_CASE);
+	        assertEquals(switch1.getType(), TokenTypes.CASE_GROUP);
+	        assertEquals(case1.getType(), TokenTypes.CASE_GROUP);
+	        assertEquals(case2.getType(), TokenTypes.CASE_GROUP);
+
 	        
 	        TypeChecking check = PowerMockito.spy(new TypeChecking());
 	        PowerMockito.doNothing().when(check, "log", Mockito.any(Integer.class), Mockito.any(String.class),
@@ -182,4 +204,7 @@ public class TypeCheckingBlackBoxTesting {
 	        check.visitToken(switch1);
 	        assertEquals(4, check.getDepth());
 	    }
+	    
+	  
+
 }
