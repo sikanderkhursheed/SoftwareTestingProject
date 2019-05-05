@@ -52,7 +52,7 @@ public class DuplicateCodeTest {
        DetailAST block2 = slist.getNextSibling();
 
        check.visitToken(block2);
-       assertEquals(0, check.detect());
+       assertEquals(1, check.detect());
 
        
 	 } 
