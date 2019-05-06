@@ -33,16 +33,17 @@ public class TypeCheckingTest {
 	    public void testGetDefaultTokensNotNull() {
 	        assertNotNull("Default tokens should not be null", check.getDefaultTokens());
 	    }
+@Test
+	    public void testGetRequiredTokensNotNull() {
+	        assertNotNull("Required tokens should not be null", check.getRequiredTokens());
+	    }
 
 	   @Test
 	    public void testGetAcceptableTokensNotNull() {
 	        assertNotNull("Acceptable tokens should not be null", check.getAcceptableTokens());
 	    }
 
-	    @Test
-	    public void testGetRequiredTokensNotNull() {
-	        assertNotNull("Required tokens should not be null", check.getRequiredTokens());
-	    }
+	    
 
 	
 	 @Test

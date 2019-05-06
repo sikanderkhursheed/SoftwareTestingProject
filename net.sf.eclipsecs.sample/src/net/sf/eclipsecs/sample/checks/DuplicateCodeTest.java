@@ -16,14 +16,14 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 public class DuplicateCodeTest {
 
 	DuplicateCodeCheck check = new DuplicateCodeCheck();
-
+	private DetailAST rootAST;
 	 private FileText text;
 	 private FileContents contents;
-	 private DetailAST rootAST;
+	 
 	 
 	 @Before
 	    public void setUp() throws Exception {
-	        text = new FileText(new File("src/net/sf/eclipses/sample/tests/DuplicateCodeTestScenario.java"), System.getProperty("file.encoding", "UTF-8"));
+	      text = new FileText(new File("src/net/sf/eclipses/sample/tests/DuplicateCodeTestScenario.java"), System.getProperty("file.encoding", "UTF-8"));
 	        contents = new FileContents(text);
 	        rootAST = JavaParser.parse(contents);
 	    }
