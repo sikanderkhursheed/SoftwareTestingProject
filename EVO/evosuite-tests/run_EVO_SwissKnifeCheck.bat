@@ -1,0 +1,1 @@
+java -cp  ".;/WSUStudy/Spring2019/582DOC/EVO/junit-4.13-beta-1.jar;/WSUStudy/Spring2019/582DOC/EVO/hamcrest-all-1.3.jar;/WSUStudy/Spring2019/582DOC/EVO/evosuite-1.0.6.jar;/WSUStudy/Spring2019/582DOC/EVO/checkstyle-8.17-all.jar;/WSUStudy/Spring2019/582DOC/EVO/slf4j-log4j12-1.7.26.jar;/GITHUB/BK5/P1/bin" org.junit.runner.JUnitCore SwissKnifeCheck_ESTest
