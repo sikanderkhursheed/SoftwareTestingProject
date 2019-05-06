@@ -1,0 +1,2 @@
+java -jar C:/WSUStudy/Spring2019/582DOC/EVO/evosuite-1.0.6.jar -class FeatureEnvyCheck -projectCP C:/GITHUB/BK5/P1/bin
+java -jar C:/WSUStudy/Spring2019/582DOC/EVO/evosuite-1.0.6.jar -class SwissKnifeCheck -projectCP C:/GITHUB/BK5/P1/bin
