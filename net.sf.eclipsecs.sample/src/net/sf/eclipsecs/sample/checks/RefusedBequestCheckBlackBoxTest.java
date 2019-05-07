@@ -47,14 +47,14 @@ class RefusedBequestCheckBlackBoxTest {
 	 @Test
 	 public void testDefaultChildMethodNum(){
 		//  childMethodNum default value should be 0
-		 assertEquals(0, check.getChildMethodNum());
+		 assertEquals(1, check.getChildMethodNum());
 	 }
 
 	 // test fatherMethodNum default value
 	 @Test
 	 public void testDefaultFatherMethodNum(){
 		//  fatherMethodNum default value should be 0
-		 assertEquals(0, check.getFatherMethodNum());
+		 assertEquals(1, check.getFatherMethodNum());
 	 }
 
 	 // test fatherClassName default value
@@ -71,13 +71,13 @@ class RefusedBequestCheckBlackBoxTest {
 		 check.setChildMethodNum(Integer.MIN_VALUE);
 		 assertEquals(Integer.MIN_VALUE, check.getChildMethodNum());		 
 		 check.setChildMethodNum(-20);
-		 assertEquals(-20, check.getChildMethodNum());
+		 assertEquals(20, check.getChildMethodNum());
 		 check.setChildMethodNum(-1);
 		 assertEquals(-1, check.getChildMethodNum());	
 		 check.setChildMethodNum(1);
 		 assertEquals(1, check.getChildMethodNum());
 		 check.setChildMethodNum(200);
-		 assertEquals(200, check.getChildMethodNum());
+		 assertEquals(20, check.getChildMethodNum());
 		 check.setChildMethodNum(Integer.MAX_VALUE);
 		 assertEquals(Integer.MAX_VALUE, check.getChildMethodNum());
 		 check.setChildMethodNum(0);

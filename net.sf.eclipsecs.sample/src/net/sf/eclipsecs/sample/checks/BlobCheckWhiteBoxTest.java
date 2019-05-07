@@ -36,9 +36,9 @@ class BlobCheckWhiteBoxTest {
 	 // test the function visitToken 
 	 @Test
 	 public void testvisitToken() throws IOException, CheckstyleException{	
-		 check.setMax(20);
 		 check.setCount(0);		 
-        // test null
+		 check.setMax(100);
+		 // test null
 		check.visitToken(null);
 		assertEquals(0, check.getCount());
 		// test empty file

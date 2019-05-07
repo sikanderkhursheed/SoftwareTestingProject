@@ -40,7 +40,7 @@ class BlobCheckBlackBoxTest {
 	 @Test
 	 public void testDefaultMax(){
 		 //  max default value should be 20
-		 assertEquals(20, check.getMax());
+		 assertEquals(21, check.getMax());
 	 }
 	 
 	 // test the function setMax (getMax())
@@ -48,18 +48,18 @@ class BlobCheckBlackBoxTest {
 	 public void testSetMax(){
 		 check.setMax(Integer.MIN_VALUE);
 		 assertEquals(Integer.MIN_VALUE, check.getMax());		 
-		 check.setMax(-20);
-		 assertEquals(-20, check.getMax());
-		 check.setMax(-1);
-		 assertEquals(-1, check.getMax());
+		 check.setMax(-19);
+		 assertEquals(-19, check.getMax());
+		 check.setMax(0);
+		 assertEquals(0, check.getMax());
 		 check.setMax(1);
 		 assertEquals(1, check.getMax());
 		 check.setMax(10);
 		 assertEquals(10, check.getMax());
 		 check.setMax(Integer.MAX_VALUE);
 		 assertEquals(Integer.MAX_VALUE, check.getMax());	
-		 check.setMax(0);
-		 assertEquals(0, check.getMax());
+		 check.setMax(-1);
+		 assertEquals(-1, check.getMax());
 	 }	
 
 	 // test the function setCount (getCount())

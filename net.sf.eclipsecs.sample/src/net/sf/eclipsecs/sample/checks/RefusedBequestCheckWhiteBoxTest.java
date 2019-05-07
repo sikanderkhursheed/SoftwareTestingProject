@@ -38,20 +38,20 @@ class RefusedBequestCheckWhiteBoxTest {
         // test null
 		check.visitToken(null);
 		assertEquals(0, check.getChildMethodNum());
-		assertEquals(0, check.getFatherMethodNum());
+		assertEquals(1, check.getFatherMethodNum());
 		assertEquals("", check.getFatherClassName());
 		// test an empty file
 		DetailAST rootAST_2=getRootAST("RefusedBequestTestScenario_2.java");  	
 		check.visitToken(rootAST_2); 
 		assertEquals(0, check.getChildMethodNum());
-		assertEquals(0, check.getFatherMethodNum());
+		assertEquals(1, check.getFatherMethodNum());
 		assertEquals("", check.getFatherClassName());
 		
 		// test a java file which only has one child class.
 		DetailAST rootAST_3=getRootAST("RefusedBequestTestScenario_3.java");
 		check.visitToken(rootAST_3);
 		assertEquals(0, check.getChildMethodNum());
-		assertEquals(0, check.getFatherMethodNum());
+		assertEquals(1, check.getFatherMethodNum());
 		assertEquals("", check.getFatherClassName());	
 
 		// test a java file which has one interface and one child class with one method.
@@ -66,7 +66,7 @@ class RefusedBequestCheckWhiteBoxTest {
 		DetailAST rootAST=getRootAST("RefusedBequestTestScenario.java");  	
 		check.visitTokenWithoutLog(rootAST); 
 		assertEquals(3, check.getChildMethodNum());
-		assertEquals(28, check.getFatherMethodNum());
+		assertEquals(10, check.getFatherMethodNum());
 		assertEquals("shape", check.getFatherClassName());
 	 } 
 
